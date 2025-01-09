@@ -1,0 +1,135 @@
+.dealer-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.dealer-avatar {
+  width: 120px;
+  height: 160px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.dealer-head {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.dealer-eyes {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 15px;
+}
+
+.dealer-eyes::before,
+.dealer-eyes::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--background-dark);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.dealer-smile {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 15px;
+  border-bottom: 4px solid var(--background-dark);
+  border-radius: 0 0 20px 20px;
+}
+
+.dealer-body {
+  width: 100px;
+  height: 80px;
+  background: linear-gradient(180deg, #16213e 0%, #1a1a2e 100%);
+  border-radius: 20px;
+  margin: -20px auto 0;
+}
+
+.dealer-bowtie {
+  width: 30px;
+  height: 10px;
+  background: var(--accent-color);
+  position: relative;
+  margin: 0 auto;
+  transform: translateY(15px);
+}
+
+.dealer-bowtie::before,
+.dealer-bowtie::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--accent-color);
+  transform: rotate(45deg);
+}
+
+.dealer-bowtie::before {
+  left: -15px;
+  top: -5px;
+}
+
+.dealer-bowtie::after {
+  right: -15px;
+  top: -5px;
+}
+
+.dealer-speech-bubble {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.dealer-speech-bubble::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid rgba(255, 255, 255, 0.1);
+}
+
+.dealer-speech-bubble p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.dealer-avatar.excited {
+  animation: bounce 0.5s ease infinite;
+}
+
+.dealer-avatar.surprised {
+  animation: shake 0.5s ease infinite;
+} 

@@ -1,38 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-gradient: linear-gradient(90deg, #f12711 0%, #f5af19 100%);
+  --background-dark: #0a0b0f;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --accent-color: #f5af19;
+  --text-light: #ffffff;
+  --text-dim: #8a8f98;
+  --card-border: rgba(245, 175, 25, 0.15);
+  --header-height: 70px;
+  --main-height: calc(100vh - var(--header-height));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: var(--background-dark);
   min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  height: var(--header-height);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.logo h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+.main-content {
+  height: var(--main-height);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+.dealer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 80px;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 0 auto;
+  max-width: 1200px;
+  flex: 1;
+}
+
+.player-section {
+  height: 450px;
+  width: 320px;
+  padding: 20px;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-space {
+  height: 320px;
+  width: 230px;
+  border: 1px dashed var(--card-border);
+  margin: 15px auto;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.draw-button {
+  width: 140px;
+  padding: 12px 0;
+  background: var(--primary-gradient);
+  font-size: 0.9em;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.reset-button {
+  width: 140px;
+  padding: 10px 0;
+  background: transparent;
+  font-size: 0.8em;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.bet-amount {
+  display: none;
+}
+
+.bet-controls {
+  width: 140px;
+  background: var(--card-bg);
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 5px;
+}
+
+.bet-controls input {
+  width: 80px;
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--text-light);
+  letter-spacing: -0.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cards-remaining {
+  font-size: 0.9em;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.scoreboard {
+  margin-top: auto;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.scoreboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.scoreboard-title {
+  color: var(--text-light);
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.total-winnings {
+  color: var(--text-dim);
+  font-size: 0.9em;
+}
+
+.total-winnings .amount {
+  color: var(--accent-color);
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+/* Card Styles */
+.card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+
+.card.red {
+  color: #f12711;
+}
+
+.card.black {
+  color: #1a1a2e;
+}
+
+/* Add round result popup */
+.round-result {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--card-bg);
+  padding: 20px 40px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(15px);
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+  z-index: 1000;
+}
+
+.round-result h3 {
+  color: var(--accent-color);
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+.round-result p {
+  color: var(--text-light);
+  font-size: 1.1em;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Update wallet address style */
+.wallet-address {
+  font-size: 0.8em;
+  color: var(--text-dim);
+  font-family: monospace;
+  margin-top: 5px;
 }
