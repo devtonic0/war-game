@@ -1,38 +1,37 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Header.styles.css';
-import WalletConnect from '../WalletConnect/WalletConnect';
-import { getAssetPath } from '../../utils/paths';
+import MenuDropdown from '../MenuDropdown/MenuDropdown';
 
-function Header() {
-  const logoPath = getAssetPath('sol-warz-logo.png');
-  
-  useEffect(() => {
-    // Debug image loading
-    const img = new Image();
-    img.onload = () => console.log('Logo loaded successfully');
-    img.onerror = (e) => {
-      console.error('Logo load error:', e);
-      console.log('Attempted path:', logoPath);
-    };
-    img.src = logoPath;
-  }, [logoPath]);
-
+const Header = ({ onOpenStats, onOpenSettings, onOpenTutorial }) => {
   return (
-    <div className="header">
-      <div className="logo">
-        <img 
-          src={logoPath}
-          alt="Sol Warz" 
-          className="logo-image"
-          onError={(e) => {
-            console.error('Logo load error:', e);
-            console.log('Attempted path:', logoPath);
-          }}
-        />
+    <header className="header">
+      <div className="header-left">
+        <div className="logo">
+          <img 
+            src={`${process.env.PUBLIC_URL}/assets/sol-warz-logo.png`} 
+            alt="Sol Warz" 
+            className="logo-image"
+          />
+        </div>
       </div>
-      <WalletConnect />
-    </div>
+
+      <div className="header-right">
+        <button 
+          className="stats-button" 
+          onClick={onOpenStats}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M3 3v18h18" stroke="currentColor" strokeWidth="2"/>
+            <path d="M7 12l4-4 4 4 4-4" stroke="currentColor" strokeWidth="2"/>
+          </svg>
+          Statistics
+        </button>
+        <button className="connect-wallet">
+          Connect Wallet
+        </button>
+      </div>
+    </header>
   );
-}
+};
 
 export default Header; 

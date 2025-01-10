@@ -1,0 +1,12 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#1A1A1A"/>
+  <circle cx="400" cy="200" r="80" fill="url(#gradient)" />
+  <text x="400" y="190" text-anchor="middle" fill="#1A1A1A" font-size="40">SOL</text>
+  <text x="400" y="220" text-anchor="middle" fill="#1A1A1A" font-size="24">Place Bet</text>
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f12711"/>
+      <stop offset="100%" style="stop-color:#f5af19"/>
+    </linearGradient>
+  </defs>
+</svg> 

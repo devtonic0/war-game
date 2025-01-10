@@ -3,6 +3,11 @@ import Header from './components/Header/Header';
 import Dealer from './components/Dealer/Dealer';
 import Scoreboard from './components/Scoreboard/Scoreboard';
 import BettingControls from './components/BettingControls/BettingControls';
+import PlayerProfile from './components/PlayerProfile/PlayerProfile';
+import Settings from './components/Settings/Settings';
+import StatisticsModal from './components/StatisticsModal/StatisticsModal';
+import MenuDropdown from './components/MenuDropdown/MenuDropdown';
+import Tutorial from './components/Tutorial/Tutorial';
 import './App.css';
 
 function App() {
@@ -15,6 +20,14 @@ function App() {
   const [totalWinnings, setTotalWinnings] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [roundWinnings, setRoundWinnings] = useState(0);
+  const [showSettings, setShowSettings] = useState(false);
+  const [settings, setSettings] = useState({
+    sound: true,
+    volume: 80,
+    animations: true
+  });
+  const [showStats, setShowStats] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(false);
   
   // Mock wallet addresses
   const player1Wallet = "8xzt...3kj9";
@@ -90,11 +103,13 @@ function App() {
       setPlayer2Deck(remainingP2Deck);
       setGameStatus('Player 1 wins this round!');
       handleRoundEnd(1, currentBet);
+      updatePlayerStats(1);
     } else if (p2Card.numValue > p1Card.numValue) {
       setPlayer2Deck([...remainingP2Deck, p1Card, p2Card]);
       setPlayer1Deck(remainingP1Deck);
       setGameStatus('Player 2 wins this round!');
       handleRoundEnd(2, currentBet);
+      updatePlayerStats(2);
     } else {
       setPlayer1Deck(remainingP1Deck);
       setPlayer2Deck(remainingP2Deck);
@@ -106,18 +121,85 @@ function App() {
     setCurrentBet(amount);
   };
 
+  const [player1Profile, setPlayer1Profile] = useState({
+    username: "Player 1",
+    avatar: `${process.env.PUBLIC_URL}/assets/avatars/soldier-orange.svg`,
+    totalPlays: 0,
+    wins: 0,
+    losses: 0,
+    winStreak: 0,
+    level: 1,
+    experience: 0
+  });
+
+  const [player2Profile, setPlayer2Profile] = useState({
+    username: "Player 2",
+    avatar: `${process.env.PUBLIC_URL}/assets/avatars/soldier-blue.svg`,
+    totalPlays: 0,
+    wins: 0,
+    losses: 0,
+    winStreak: 0,
+    level: 1,
+    experience: 0
+  });
+
+  const updatePlayerStats = (winner) => {
+    if (winner === 1) {
+      setPlayer1Profile(prev => ({
+        ...prev,
+        totalPlays: prev.totalPlays + 1,
+        wins: prev.wins + 1,
+        winStreak: prev.winStreak + 1,
+        experience: prev.experience + 10,
+        level: Math.floor(prev.experience / 100) + 1
+      }));
+      setPlayer2Profile(prev => ({
+        ...prev,
+        totalPlays: prev.totalPlays + 1,
+        losses: prev.losses + 1,
+        winStreak: 0
+      }));
+    } else if (winner === 2) {
+      setPlayer2Profile(prev => ({
+        ...prev,
+        totalPlays: prev.totalPlays + 1,
+        wins: prev.wins + 1,
+        winStreak: prev.winStreak + 1,
+        experience: prev.experience + 10,
+        level: Math.floor(prev.experience / 100) + 1
+      }));
+      setPlayer1Profile(prev => ({
+        ...prev,
+        totalPlays: prev.totalPlays + 1,
+        losses: prev.losses + 1,
+        winStreak: 0
+      }));
+    }
+  };
+
+  const handleSettingChange = (setting, value) => {
+    setSettings(prev => ({
+      ...prev,
+      [setting]: value
+    }));
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header 
+        onOpenStats={() => setShowStats(true)}
+        onOpenSettings={() => setShowSettings(true)}
+        onOpenTutorial={() => setShowTutorial(true)}
+      />
       <main className="main-content">
         <Dealer message={gameStatus} />
         
         <div className="game-container">
           <div className="player-section">
-            <div>
-              <h2>Player 1</h2>
-              <div className="wallet-address">{player1Wallet}</div>
-            </div>
+            <PlayerProfile 
+              {...player1Profile} 
+              cardsRemaining={player1Deck.length}
+            />
             <div className="card-space">
               {player1Card && (
                 <div className={`card ${player1Card.suit === '♥' || player1Card.suit === '♦' ? 'red' : 'black'}`}>
@@ -147,10 +229,10 @@ function App() {
           </div>
 
           <div className="player-section">
-            <div>
-              <h2>Player 2</h2>
-              <div className="wallet-address">{player2Wallet}</div>
-            </div>
+            <PlayerProfile 
+              {...player2Profile}
+              cardsRemaining={player2Deck.length}
+            />
             <div className="card-space">
               {player2Card && (
                 <div className={`card ${player2Card.suit === '♥' || player2Card.suit === '♦' ? 'red' : 'black'}`}>
@@ -178,6 +260,27 @@ function App() {
         )}
       </main>
       <BettingControls onBetChange={handleBetChange} maxBet={10} />
+      <Settings
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+        settings={settings}
+        onSettingChange={handleSettingChange}
+      />
+      <StatisticsModal
+        isOpen={showStats}
+        onClose={() => setShowStats(false)}
+        player1Stats={player1Profile}
+        player2Stats={player2Profile}
+      />
+      <MenuDropdown 
+        onOpenStats={() => setShowStats(true)}
+        onOpenSettings={() => setShowSettings(true)}
+        onOpenTutorial={() => setShowTutorial(true)}
+      />
+      <Tutorial 
+        isOpen={showTutorial}
+        onClose={() => setShowTutorial(false)}
+      />
     </div>
   );
 }

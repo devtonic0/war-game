@@ -1,0 +1,7 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#1A1A1A"/>
+  <rect x="250" y="100" width="120" height="200" rx="10" fill="#FFFFFF" stroke="#000000"/>
+  <rect x="430" y="100" width="120" height="200" rx="10" fill="#FFFFFF" stroke="#000000"/>
+  <text x="310" y="200" text-anchor="middle" fill="#000000" font-size="40">A♠</text>
+  <text x="490" y="200" text-anchor="middle" fill="#FF0000" font-size="40">K♥</text>
+</svg> 

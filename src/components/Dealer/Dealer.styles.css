@@ -2,23 +2,25 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin: 1rem auto 2rem;
   position: relative;
   z-index: 30;
+  max-width: 800px;
+  padding: 0 1rem;
 }
 
 .dealer-avatar {
-  width: 250px;
-  height: 250px;
+  width: 220px;
+  height: 220px;
   position: relative;
-  transition: transform 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
-  margin-bottom: -50px;
+  margin-bottom: -40px;
   z-index: 40;
   transform: translateX(20px);
+  animation: hover 3s ease-in-out infinite;
 }
 
 .dealer-image {
@@ -27,38 +29,40 @@
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   z-index: 10;
-  transform: translateY(-30px);
+  transform: translateY(-35px);
 }
 
 .dealer-message {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1.2rem 1.8rem;
-  border-radius: 16px;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
   position: relative;
   flex: 1;
-  max-width: 400px;
+  max-width: 350px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   z-index: 35;
-  margin-top: -30px;
+  margin-top: -20px;
+  border: none;
 }
 
 .dealer-message::before {
   content: '';
   position: absolute;
-  left: -10px;
+  left: -8px;
   top: 50%;
   transform: translateY(-50%);
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid rgba(255, 255, 255, 0.1);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid white;
 }
 
 .dealer-message p {
   margin: 0;
-  color: var(--text-light);
-  font-size: 1.1rem;
+  color: #1a1a2e;
+  font-size: 1rem;
   line-height: 1.4;
+  font-weight: 500;
 }
 
 /* Animations */
@@ -75,6 +79,39 @@
   0%, 100% { transform: rotate(0deg) translateX(0); }
   25% { transform: rotate(-5deg) translateX(10px); }
   75% { transform: rotate(5deg) translateX(5px); }
+}
+
+/* Add hover animation */
+@keyframes hover {
+  0% {
+    transform: translateY(0px) translateX(20px);
+  }
+  50% {
+    transform: translateY(-15px) translateX(20px);
+  }
+  100% {
+    transform: translateY(0px) translateX(20px);
+  }
+}
+
+/* Enhance existing animations */
+.dealer-avatar.excited {
+  animation: excited 0.5s ease-in-out;
+}
+
+.dealer-avatar.surprised {
+  animation: surprised 0.5s ease-in-out;
+}
+
+@keyframes excited {
+  0%, 100% { transform: translateY(0px) translateX(20px); }
+  25% { transform: translateY(-20px) translateX(15px) rotate(-5deg); }
+  75% { transform: translateY(-10px) translateX(25px) rotate(5deg); }
+}
+
+@keyframes surprised {
+  0%, 100% { transform: scale(1) translateX(20px); }
+  50% { transform: scale(1.1) translateX(20px); }
 }
 
 .dealer-avatar.excited {

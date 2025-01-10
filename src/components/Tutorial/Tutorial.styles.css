@@ -1,0 +1,137 @@
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.tutorial-overlay.exiting {
+  opacity: 0;
+}
+
+.tutorial-modal {
+  background: var(--background-dark);
+  border-radius: 20px;
+  width: 800px;
+  max-width: 90vw;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.tutorial-content {
+  padding: 2rem;
+}
+
+.tutorial-image {
+  width: 100%;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tutorial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tutorial-text {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tutorial-text h2 {
+  color: var(--text-light);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tutorial-text p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.step-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background: var(--accent-color);
+  transform: scale(1.2);
+}
+
+.tutorial-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.tutorial-buttons button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prev-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  border: none;
+}
+
+.next-button {
+  background: var(--primary-gradient);
+  color: var(--background-dark);
+  border: none;
+}
+
+.tutorial-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: var(--text-light);
+} 

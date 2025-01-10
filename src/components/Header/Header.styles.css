@@ -27,34 +27,60 @@
   height: 100%;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 1;
   padding: 1rem 0;
 }
 
-.logo h1 {
-  font-size: 2.5rem;
-  background: linear-gradient(90deg, #00f5a0 0%, #00d9f5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
-}
-
-.subtitle {
-  color: #8a8f98;
-  font-size: 0.9rem;
-}
-
-.wallet-connect {
-  padding-right: 0;
-  margin-left: auto;
-  height: 100%;
+.header-controls {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
-.wallet-connect .connect-button {
-  min-width: 240px;
-  text-align: center;
-  height: fit-content;
+.connect-wallet {
+  background: var(--primary-gradient);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  color: var(--background-dark);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.connect-wallet:hover {
+  transform: translateY(-2px);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stats-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.stats-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.stats-button svg {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.stats-button:hover svg {
+  opacity: 1;
 } 
