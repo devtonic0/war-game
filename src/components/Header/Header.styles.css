@@ -1,6 +1,6 @@
 .header {
   background: transparent;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   position: relative;
   z-index: 20;
   display: flex;
@@ -12,23 +12,24 @@
 }
 
 .logo {
-  height: 189px;
+  height: 300px;
   display: flex;
   align-items: center;
   padding: 0;
   margin: 0;
-  position: absolute;
-  left: 1.2rem;
+  position: relative;
+  left: 0;
+  transform: scale(0.7);
+  transform-origin: left center;
 }
 
 .logo-image {
   height: 100%;
   width: auto;
-  min-width: 756px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-  mix-blend-mode: screen;
+  filter: brightness(0) invert(1);
   opacity: 1;
+  padding: 1rem 0;
 }
 
 .logo h1 {
@@ -45,11 +46,15 @@
 }
 
 .wallet-connect {
-  padding-right: 1.2rem;
+  padding-right: 0;
   margin-left: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .wallet-connect .connect-button {
   min-width: 240px;
   text-align: center;
+  height: fit-content;
 } 
