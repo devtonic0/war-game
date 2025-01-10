@@ -5,6 +5,13 @@ function Dealer({ message }) {
   const [animation, setAnimation] = useState('idle');
   const [dealerMessage, setDealerMessage] = useState("Welcome to Sol Warz! Place your bet and draw cards!");
 
+  // Get the image path using require
+  const dealerImage = process.env.PUBLIC_URL + '/assets/dealer-robot.png';
+
+  useEffect(() => {
+    console.log('Dealer image path:', dealerImage);
+  }, []);
+
   useEffect(() => {
     if (message) {
       if (message.includes('wins')) {
@@ -14,7 +21,6 @@ function Dealer({ message }) {
       } else {
         setAnimation('idle');
       }
-
       setDealerMessage(getDealerMessage(message));
     }
   }, [message]);
@@ -33,15 +39,19 @@ function Dealer({ message }) {
   return (
     <div className="dealer-container">
       <div className={`dealer-avatar ${animation}`}>
-        <div className="dealer-head">
-          <div className="dealer-eyes"></div>
-          <div className="dealer-smile"></div>
-        </div>
-        <div className="dealer-body">
-          <div className="dealer-bowtie"></div>
-        </div>
+        <img 
+          src={dealerImage}
+          alt="Robot Dealer" 
+          className="dealer-image"
+          style={{ width: '100%', height: '100%' }}
+          onError={(e) => {
+            console.error('Failed to load dealer image:', e);
+            console.log('Image path:', dealerImage);
+            console.log('Current src:', e.target.src);
+          }}
+        />
       </div>
-      <div className="dealer-speech-bubble">
+      <div className="dealer-message">
         <p>{dealerMessage}</p>
       </div>
     </div>

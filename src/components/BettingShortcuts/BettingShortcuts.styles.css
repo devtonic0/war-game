@@ -1,0 +1,28 @@
+.betting-shortcuts {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+  justify-content: center;
+}
+
+.shortcut-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--text-light);
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 70px;
+}
+
+.shortcut-btn:hover {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+.shortcut-btn:active {
+  transform: translateY(0);
+} 

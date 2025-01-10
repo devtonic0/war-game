@@ -6,7 +6,11 @@ function Header() {
   return (
     <div className="header">
       <div className="logo">
-        <h1>Sol Warz</h1>
+        <img 
+          src={process.env.PUBLIC_URL + '/assets/sol-warz-logo.png'}
+          alt="Sol Warz" 
+          className="logo-image"
+        />
       </div>
       <WalletConnect />
     </div>

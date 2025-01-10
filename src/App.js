@@ -56,6 +56,14 @@ function App() {
     initializeGame();
   }, []);
 
+  useEffect(() => {
+    // Debug image paths
+    console.log('Base URL:', window.location.origin);
+    console.log('Pathname:', window.location.pathname);
+    console.log('Public URL:', process.env.PUBLIC_URL);
+    console.log('Full dealer path:', `${process.env.PUBLIC_URL}/assets/dealer-robot.png`);
+  }, []);
+
   const handleRoundEnd = (winner, winAmount) => {
     setRoundWinnings(winAmount);
     setShowResult(true);

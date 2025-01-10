@@ -3,101 +3,47 @@
   align-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 30;
 }
 
 .dealer-avatar {
-  width: 120px;
-  height: 160px;
+  width: 250px;
+  height: 250px;
   position: relative;
   transition: transform 0.3s ease;
-}
-
-.dealer-head {
-  width: 80px;
-  height: 80px;
-  background: var(--primary-gradient);
-  border-radius: 50%;
-  position: relative;
-  margin: 0 auto;
-}
-
-.dealer-eyes {
-  position: absolute;
-  top: 40%;
-  width: 100%;
   display: flex;
-  justify-content: space-around;
-  padding: 0 15px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  margin-bottom: -50px;
+  z-index: 40;
+  transform: translateX(20px);
 }
 
-.dealer-eyes::before,
-.dealer-eyes::after {
-  content: '';
-  width: 12px;
-  height: 12px;
-  background: var(--background-dark);
-  border-radius: 50%;
-  transition: all 0.3s ease;
+.dealer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  z-index: 10;
+  transform: translateY(-30px);
 }
 
-.dealer-smile {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 15px;
-  border-bottom: 4px solid var(--background-dark);
-  border-radius: 0 0 20px 20px;
-}
-
-.dealer-body {
-  width: 100px;
-  height: 80px;
-  background: linear-gradient(180deg, #16213e 0%, #1a1a2e 100%);
-  border-radius: 20px;
-  margin: -20px auto 0;
-}
-
-.dealer-bowtie {
-  width: 30px;
-  height: 10px;
-  background: var(--accent-color);
-  position: relative;
-  margin: 0 auto;
-  transform: translateY(15px);
-}
-
-.dealer-bowtie::before,
-.dealer-bowtie::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: var(--accent-color);
-  transform: rotate(45deg);
-}
-
-.dealer-bowtie::before {
-  left: -15px;
-  top: -5px;
-}
-
-.dealer-bowtie::after {
-  right: -15px;
-  top: -5px;
-}
-
-.dealer-speech-bubble {
+.dealer-message {
   background: rgba(255, 255, 255, 0.1);
-  padding: 1rem 1.5rem;
-  border-radius: 20px;
+  padding: 1.2rem 1.8rem;
+  border-radius: 16px;
   position: relative;
   flex: 1;
   max-width: 400px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 35;
+  margin-top: -30px;
 }
 
-.dealer-speech-bubble::before {
+.dealer-message::before {
   content: '';
   position: absolute;
   left: -10px;
@@ -108,26 +54,27 @@
   border-right: 10px solid rgba(255, 255, 255, 0.1);
 }
 
-.dealer-speech-bubble p {
+.dealer-message p {
   margin: 0;
   color: var(--text-light);
   font-size: 1.1rem;
+  line-height: 1.4;
 }
 
 /* Animations */
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
 }
 
 .dealer-avatar.excited {
-  animation: bounce 0.5s ease infinite;
+  animation: bounce 0.8s ease infinite;
 }
 
 .dealer-avatar.surprised {
