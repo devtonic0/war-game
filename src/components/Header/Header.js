@@ -1,17 +1,23 @@
 import React from 'react';
 import './Header.styles.css';
 import WalletConnect from '../WalletConnect/WalletConnect';
+import { getAssetPath } from '../../utils/paths';
 
 function Header() {
-  console.log('Logo path:', process.env.PUBLIC_URL + '/assets/sol-warz-logo.png');
+  const logoPath = getAssetPath('sol-warz-logo.png');
+  
+  console.log('Logo path:', logoPath);
+  
   return (
     <div className="header">
       <div className="logo">
         <img 
-          src={process.env.PUBLIC_URL + '/assets/sol-warz-logo.png'}
+          src={logoPath}
           alt="Sol Warz" 
           className="logo-image"
-          onError={(e) => console.log('Logo load error:', e)}
+          onError={(e) => {
+            console.log('Logo load error:', e);
+          }}
         />
       </div>
       <WalletConnect />
