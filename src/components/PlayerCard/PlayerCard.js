@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './PlayerCard.styles.css';
 
 const PlayerCard = ({ player, card, wallet, cardsRemaining }) => {
+  const [isFlipping, setIsFlipping] = useState(false);
+
+  useEffect(() => {
+    if (card) {
+      setIsFlipping(true);
+      setTimeout(() => setIsFlipping(false), 600);
+    }
+  }, [card]);
+
   return (
     <div className="card-container">
       <div>
@@ -9,8 +19,11 @@ const PlayerCard = ({ player, card, wallet, cardsRemaining }) => {
       </div>
       <div className="card-space">
         {card && (
-          <div className={`card ${card.suit === '♥' || card.suit === '♦' ? 'red' : 'black'}`}>
-            {card.display}
+          <div className={`card ${isFlipping ? 'flipping' : ''} ${card.suit === '♥' || card.suit === '♦' ? 'red' : 'black'}`}>
+            <div className="card-face card-front">
+              {card.display}
+            </div>
+            <div className="card-face card-back" />
           </div>
         )}
       </div>

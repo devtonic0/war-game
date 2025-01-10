@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Dealer from './components/Dealer/Dealer';
 import Scoreboard from './components/Scoreboard/Scoreboard';
+import BettingControls from './components/BettingControls/BettingControls';
 import './App.css';
 
 function App() {
@@ -101,6 +102,10 @@ function App() {
     }
   };
 
+  const handleBetChange = (amount) => {
+    setCurrentBet(amount);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -137,7 +142,7 @@ function App() {
                 step="0.1"
                 placeholder="0.0"
               />
-              <span className="bet-label">SOL</span>
+              <span className="bet-label">◎ SOL</span>
             </div>
           </div>
 
@@ -172,6 +177,7 @@ function App() {
           </div>
         )}
       </main>
+      <BettingControls onBetChange={handleBetChange} maxBet={10} />
     </div>
   );
 }

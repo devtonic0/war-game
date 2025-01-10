@@ -47,20 +47,22 @@
   margin: 0 20px;
 }
 
-.bet-controls {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
+/* Style the 0 SOL box */
+.game-controls > div:last-of-type {
+  background: #1A1A1A;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  min-width: 120px;
+  text-align: center;
 }
 
-/* Add these styles to your existing CSS */
-.card-space {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
+/* Style the number and text */
+.game-controls > div:last-of-type,
+.game-controls > div:last-of-type span {
+  color: #FFFFFF !important;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 .card {
@@ -114,4 +116,263 @@
   background: #ff4444;
   border-radius: 2px;
   transition: width 0.3s ease;
-} 
+}
+
+.bet-amount-box {
+  background: #FFFFFF; /* Pure white background */
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Add glow effect */
+}
+
+.bet-amount {
+  color: #FFFFFF;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bet-amount .number {
+  color: #FFFFFF; /* Pure white text */
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.bet-amount .currency {
+  color: #FFFFFF; /* Pure white text */
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+/* Style for the container box */
+.bet-display {
+  background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  backdrop-filter: blur(5px);
+}
+
+/* Update the bet display box styles */
+.game-controls .bet-display {
+  background: #FFFFFF; /* Pure white background */
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Style the number */
+.game-controls .bet-display .amount {
+  color: #FFFFFF;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Style the SOL text */
+.game-controls .bet-display .currency {
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+/* Container for the bet amount */
+.game-controls .bet-box {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.8rem 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* Target the specific box containing the bet amount */
+.game-controls > div:nth-child(3) {
+  background: rgba(0, 0, 0, 0.8); /* Dark background */
+  border-radius: 12px;
+  padding: 0.8rem 1.6rem;
+  color: #FFFFFF; /* White text */
+  font-size: 1.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Make both the number and "SOL" text white */
+.game-controls > div:nth-child(3) * {
+  color: #FFFFFF !important;
+}
+
+/* Style the bet amount display */
+.game-controls > button + button + div {
+  background: #1A1A1A; /* Dark background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  font-weight: 500;
+  min-width: 120px;
+}
+
+/* Style both the number and SOL text */
+.game-controls > button + button + div,
+.game-controls > button + button + div * {
+  color: #FFFFFF !important;
+}
+
+/* Add a subtle glow effect */
+.game-controls > button + button + div {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+/* Clean up previous bet-related styles */
+.betting-controls {
+  background: #1A1A1A; /* Dark background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+/* Style the number input and text */
+.betting-controls input,
+.betting-controls span {
+  color: #FFFFFF !important;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.betting-controls input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: auto;
+  text-align: right;
+}
+
+/* Remove spinner buttons from number input */
+.betting-controls input::-webkit-outer-spin-button,
+.betting-controls input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* First, let's clean up any conflicting styles */
+.bet-controls, .betting-controls, .bet-display, .bet-amount-box {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Target the specific SOL amount display */
+.game-controls > div:last-child {
+  background: #1A1A1A;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Style the number */
+.game-controls > div:last-child {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+/* Style "SOL" text */
+.game-controls > div:last-child::after {
+  content: "SOL";
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+/* First, remove all previous bet-related styles */
+
+/* Target the specific bet controls container */
+.bet-controls {
+  width: 140px;
+  background: #1A1A1A !important; /* Dark background to match the theme */
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Style the input */
+.bet-controls input {
+  width: 80px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  text-align: center;
+  outline: none;
+}
+
+/* Input hover and focus states */
+.bet-controls input:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.bet-controls input:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Style the SOL text */
+.bet-label {
+  color: #FFFFFF !important;
+  font-size: 1.4rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Remove spinner buttons from number input */
+.bet-controls input::-webkit-outer-spin-button,
+.bet-controls input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Ensure the Solana symbol is also white */
+.bet-label::first-letter {
+  color: #FFFFFF;
+}
+
+/* Optional: Add a hover effect */
+.bet-controls:hover .bet-label {
+  opacity: 1;
+}
