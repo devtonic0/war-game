@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './BetSettingsModal.styles.css';
+import './BetSettingsModal.css';
 
 const BetSettingsModal = ({ isOpen, onClose, onSave }) => {
   const [customBets, setCustomBets] = useState([0.1, 0.5, 1.0, 2.0]);
