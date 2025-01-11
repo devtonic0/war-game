@@ -134,24 +134,58 @@
 }
 
 .bet-controls {
-  width: 140px;
+  width: 180px;
   background: var(--card-bg);
   padding: 8px;
   border-radius: 8px;
   border: 1px solid var(--card-border);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .bet-controls input {
-  width: 80px;
+  width: 60px;
   background: transparent;
   border: none;
-  color: var(--accent-color);
+  color: var(--text-light);
   font-size: 1.1em;
+  font-weight: 700;
   text-align: center;
+}
+
+.bet-controls input:focus {
+  outline: none;
+}
+
+.bet-amount-wrapper {
+  flex: 1;
+  background: var(--primary-gradient);
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.bet-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 8px;
+  font-size: 1.2em;
+  transition: opacity 0.2s;
+}
+
+.bet-button:hover {
+  opacity: 0.8;
+}
+
+.bet-label {
+  color: var(--text-light);
+  font-size: 0.9em;
+  margin-left: 5px;
 }
 
 .game-wrapper {
@@ -171,7 +205,7 @@ h2 {
 
 .cards-remaining {
   font-size: 0.9em;
-  color: var(--text-dim);
+  color: var(--text-light);
   letter-spacing: 0.5px;
 }
 
@@ -311,4 +345,89 @@ h2 {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-light);
   transform: translateY(-2px);
+}
+
+.bet-controls input::-webkit-outer-spin-button,
+.bet-controls input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bet-controls input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.quick-bet-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.quick-bet-button {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: var(--text-light);
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-bet-button:hover {
+  background: var(--primary-gradient);
+  border-color: transparent;
+}
+
+.quick-bet-button.active {
+  background: var(--primary-gradient);
+  border-color: transparent;
+}
+
+.bet-settings-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-icon {
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.settings-icon:hover {
+  color: var(--accent-color);
+}
+
+.deck-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.deck-button {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 4px 12px;
+  color: var(--text-dim);
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.deck-button.active {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: var(--text-light);
+}
+
+.deck-button:hover:not(.active) {
+  border-color: var(--text-light);
+  color: var(--text-light);
 }

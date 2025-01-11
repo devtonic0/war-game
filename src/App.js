@@ -8,6 +8,7 @@ import Settings from './components/Settings/Settings';
 import StatisticsModal from './components/StatisticsModal/StatisticsModal';
 import MenuDropdown from './components/MenuDropdown/MenuDropdown';
 import Tutorial from './components/Tutorial/Tutorial';
+import BetSettingsModal from './components/BetSettingsModal/BetSettingsModal';
 import './App.css';
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
   });
   const [showStats, setShowStats] = useState(false);
   const [showTutorial, setShowTutorial] = useState(false);
+  const [showBetSettings, setShowBetSettings] = useState(false);
+  const [customBets, setCustomBets] = useState([0.1, 0.5, 1.0, 2.0]);
+  const [deckCount, setDeckCount] = useState(1);
   
   // Mock wallet addresses
   const player1Wallet = "8xzt...3kj9";
@@ -208,7 +212,7 @@ function App() {
               )}
             </div>
             <div className="cards-remaining">
-              Cards remaining: {player1Deck.length}
+              Player 1: {player1Wallet}
             </div>
           </div>
 
@@ -216,15 +220,73 @@ function App() {
             <button className="draw-button" onClick={drawCards}>DRAW</button>
             <button className="reset-button" onClick={initializeGame}>New Game</button>
             <div className="bet-controls">
-              <input 
-                type="number" 
-                value={currentBet}
-                onChange={(e) => setCurrentBet(Number(e.target.value))}
-                min="0"
-                step="0.1"
-                placeholder="0.0"
-              />
-              <span className="bet-label">◎ SOL</span>
+              <div className="bet-amount-wrapper">
+                <button 
+                  className="bet-button" 
+                  onClick={() => setCurrentBet(Math.max(0, currentBet - 0.1))}
+                >
+                  -
+                </button>
+                <input 
+                  type="number" 
+                  value={currentBet}
+                  onChange={(e) => setCurrentBet(Number(e.target.value))}
+                  min="0"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+                <button 
+                  className="bet-button" 
+                  onClick={() => setCurrentBet(currentBet + 0.1)}
+                >
+                  +
+                </button>
+              </div>
+              <span className="bet-label">SOL</span>
+            </div>
+            <div className="quick-bet-options">
+              <button 
+                className={`quick-bet-button ${currentBet === 0.1 ? 'active' : ''}`} 
+                onClick={() => setCurrentBet(0.1)}
+              >
+                0.1
+              </button>
+              <button 
+                className={`quick-bet-button ${currentBet === 0.5 ? 'active' : ''}`} 
+                onClick={() => setCurrentBet(0.5)}
+              >
+                0.5
+              </button>
+              <button 
+                className={`quick-bet-button ${currentBet === 1.0 ? 'active' : ''}`} 
+                onClick={() => setCurrentBet(1.0)}
+              >
+                1.0
+              </button>
+              <button 
+                className={`quick-bet-button ${currentBet === 2.0 ? 'active' : ''}`} 
+                onClick={() => setCurrentBet(2.0)}
+              >
+                2.0
+              </button>
+              <svg 
+                className="settings-icon" 
+                onClick={() => setShowBetSettings(true)} 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+              >
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <div className="deck-options">
+              <button className={`deck-button ${deckCount === 1 ? 'active' : ''}`} onClick={() => setDeckCount(1)}>1 Deck</button>
+              <button className={`deck-button ${deckCount === 2 ? 'active' : ''}`} onClick={() => setDeckCount(2)}>2 Decks</button>
+              <button className={`deck-button ${deckCount === 3 ? 'active' : ''}`} onClick={() => setDeckCount(3)}>3 Decks</button>
             </div>
           </div>
 
@@ -241,7 +303,7 @@ function App() {
               )}
             </div>
             <div className="cards-remaining">
-              Cards remaining: {player2Deck.length}
+              Player 2: {player2Wallet}
             </div>
           </div>
         </div>
@@ -280,6 +342,14 @@ function App() {
       <Tutorial 
         isOpen={showTutorial}
         onClose={() => setShowTutorial(false)}
+      />
+      <BetSettingsModal 
+        isOpen={showBetSettings}
+        onClose={() => setShowBetSettings(false)}
+        onSave={(newBets) => {
+          setCustomBets(newBets);
+          setShowBetSettings(false);
+        }}
       />
     </div>
   );

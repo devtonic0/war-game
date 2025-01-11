@@ -1,0 +1,159 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  animation: modalFadeIn 0.3s ease;
+}
+
+.modal-content h3 {
+  color: var(--text-light);
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.bet-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.bet-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.bet-input-group label {
+  color: var(--text-dim);
+  font-size: 0.9em;
+}
+
+.bet-input-group input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--text-light);
+  width: 120px;
+  font-size: 1em;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.cancel-button {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-dim);
+}
+
+.save-button {
+  background: var(--primary-gradient);
+  border: none;
+  color: var(--text-light);
+}
+
+.cancel-button:hover {
+  border-color: var(--text-light);
+  color: var(--text-light);
+}
+
+.save-button:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bet-label {
+  color: var(--text-light);
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.bet-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bet-amount-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--primary-gradient);
+  border-radius: 6px;
+  padding: 6px;
+  width: 160px;
+  justify-content: space-between;
+}
+
+.bet-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 8px;
+  font-size: 1.2em;
+}
+
+.bet-amount-wrapper input {
+  width: 60px;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.1em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.bet-amount-wrapper input::-webkit-outer-spin-button,
+.bet-amount-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bet-amount-wrapper input[type=number] {
+  -moz-appearance: textfield;
+} 
